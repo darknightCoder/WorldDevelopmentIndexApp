@@ -15,7 +15,7 @@ var utils = require('./utils');
 // creating a read stream for reading the wdi data file which is quite large
 var readable = fs.createReadStream('./WDI_Data.csv',{encoding:'utf8'});
 
-utils.convertCsvToJson(readable);
+utils.convertCsvToJson.convertToJson(readable);
 
 //to-do to make it a web app and provide user interface to do so.
 // app.get('/',function(err,res) {
@@ -26,7 +26,7 @@ utils.convertCsvToJson(readable);
 
 //load config details
 var keyFile = require(utils.configUtil.secretfile);
-var port = process.env.PORT || config.port || 3400;
+var port = process.env.PORT || utils.configUtil.port || 3400;
 
 
 

@@ -7,6 +7,7 @@ const fs = require('fs');
 const countryCode =require('../data/countryCodes.json');
 
 var json = {};
+
 var data = [];
 var top15=[];
 var count=0;
@@ -72,10 +73,12 @@ exports = module.exports = {
              .fromStream(readableStream)
              .on('json',function(csvRow){
                  //console.log(csvRow)
-             //console.log(allCodes.indexOf(csvRow['Country Code']),csvRow['Country Code']);
+             if(allCodes.indexOf(csvRow['Country Code'])!==-1) {
+                 data.push(csvRow);
+             }
                  if(csvRow['Indicator Name']=='GDP (current US$)' && csvRow['2005']!=='' && allCodes.indexOf(csvRow['Country Code'])!==-1) {
 
-                     //data.push(csvRow);
+
                      parseTop15(csvRow)
                      //console.log(csvRow['2005'])
                  }
