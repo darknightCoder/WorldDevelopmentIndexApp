@@ -1,0 +1,6 @@
+{
+  "name" : "my app",
+  "port" : 3300,
+  "secretfile" : "./config/secrets.json",
+  "env" : "development"
+}
